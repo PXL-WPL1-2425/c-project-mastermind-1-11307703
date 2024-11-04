@@ -20,6 +20,22 @@ namespace Mastermind
         {
             InitializeComponent();
 
+            
+            var colors = new List<string> { "Red", "Yellow", "White", "Orange", "Green", "Blue" };
+            var random = new Random();
+
+            // 4 willekeurige kleuren
+            var secretCode = new List<string>
+            {
+                colors[random.Next(colors.Count)],
+                colors[random.Next(colors.Count)],
+                colors[random.Next(colors.Count)],
+                colors[random.Next(colors.Count)]   
+            };
+
+            // Titel
+            this.Title = "Mastermind Oplossing: " + string.Join(", ", secretCode);
+
         }
 
      
