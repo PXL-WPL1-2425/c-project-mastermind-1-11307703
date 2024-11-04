@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Drawing;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -36,8 +37,28 @@ namespace Mastermind
             // Titel
             this.Title = "Mastermind Oplossing: " + string.Join(", ", secretCode);
 
+         
         }
 
-     
+        private void comboBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (sender is ComboBox comboBox && comboBox.SelectedItem is ComboBoxItem selectedItem)
+            {
+                string selectedColor = selectedItem.Content.ToString();
+
+                Label targetLabel = null;
+                if (comboBox == comboBox1) targetLabel = kleur1;
+                else if (comboBox == comboBox2) targetLabel = kleur2;
+                else if (comboBox == comboBox3) targetLabel = kleur3;
+                else if (comboBox == comboBox4) targetLabel = kleur4;
+
+                if (targetLabel != null)
+                {
+                    targetLabel.Background = (Brush)new BrushConverter().ConvertFromString(selectedColor);
+                }
+            }
+        }
+
+      
     }
 }
