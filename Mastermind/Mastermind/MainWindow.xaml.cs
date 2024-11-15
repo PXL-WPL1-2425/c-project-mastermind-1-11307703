@@ -9,56 +9,168 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
 namespace Mastermind
-{
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+{  
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
+            InitializeGame();
 
-            
-            var colors = new List<string> { "Red", "Yellow", "White", "Orange", "Green", "Blue" };
-            var random = new Random();
-
-            // 4 willekeurige kleuren
-            var secretCode = new List<string>
-            {
-                colors[random.Next(colors.Count)],
-                colors[random.Next(colors.Count)],
-                colors[random.Next(colors.Count)],
-                colors[random.Next(colors.Count)]   
-            };
-
-            // Titel
-            this.Title = "Mastermind Oplossing: " + string.Join(", ", secretCode);
-
-         
         }
 
-        private void comboBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void InitializeGame()
         {
-            if (sender is ComboBox comboBox && comboBox.SelectedItem is ComboBoxItem selectedItem)
+            StringBuilder secretCode = new StringBuilder();
+            Random color = new Random();
+            secretCode.Append("Mastermind Code: ");
+            for (int i = 0; i < 4; i++)
             {
-                string selectedColor = selectedItem.Content.ToString();
-
-                Label targetLabel = null;
-                if (comboBox == comboBox1) targetLabel = kleur1;
-                else if (comboBox == comboBox2) targetLabel = kleur2;
-                else if (comboBox == comboBox3) targetLabel = kleur3;
-                else if (comboBox == comboBox4) targetLabel = kleur4;
-
-                if (targetLabel != null)
+                int colorNumber = color.Next(1, 7);
+                if (colorNumber == 1)
                 {
-                    targetLabel.Background = (Brush)new BrushConverter().ConvertFromString(selectedColor);
+                    secretCode.Append("Red, ");
+                }
+                else if (colorNumber == 2)
+                {
+                    secretCode.Append("Yellow, ");
+                }
+                else if (colorNumber == 3)
+                {
+                    secretCode.Append("Orange, ");
+                }
+                else if (colorNumber == 4)
+                {
+                    secretCode.Append("White, ");
+                }
+                else if (colorNumber == 5)
+                {
+                    secretCode.Append("Green, ");
+                }
+                else if (colorNumber == 6)
+                {
+                    secretCode.Append("Blue, ");
+                }
+            }
+            secretCode.Length -= 2;
+            Title = secretCode.ToString();
+        }
+            
+
+        private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (sender == comboBox1 && comboBox1.SelectedItem != null)
+            {
+                if (comboBox1.SelectedIndex == 0)
+                {
+                    kleur1.Background = new SolidColorBrush(Colors.Red);
+                }
+                if (comboBox1.SelectedIndex == 1)
+                {
+                    kleur1.Background = new SolidColorBrush(Colors.Yellow);
+                }
+                if (comboBox1.SelectedIndex == 2)
+                {
+                    kleur1.Background = new SolidColorBrush(Colors.Orange);
+                }
+                if (comboBox1.SelectedIndex == 3)
+                {
+                    kleur1.Background = new SolidColorBrush(Colors.White);
+                }
+                if (comboBox1.SelectedIndex == 4)
+                {
+                    kleur1.Background = new SolidColorBrush(Colors.Green);
+                }
+                if (comboBox1.SelectedIndex == 5)
+                {
+                    kleur1.Background = new SolidColorBrush(Colors.Blue);
+                }           
+            }
+
+           if (sender == comboBox2 && comboBox2.SelectedItem != null)
+            {
+                if (comboBox2.SelectedIndex == 0)
+                {
+                    kleur2.Background = new SolidColorBrush(Colors.Red);
+                }
+                if (comboBox2.SelectedIndex == 1)
+                {
+                    kleur2.Background = new SolidColorBrush(Colors.Yellow);
+                }
+                if (comboBox2.SelectedIndex == 2)
+                {
+                    kleur2.Background = new SolidColorBrush(Colors.Orange);
+                }
+                if (comboBox2.SelectedIndex == 3)
+                {
+                    kleur2.Background = new SolidColorBrush(Colors.White);
+                }
+                if (comboBox2.SelectedIndex == 4)
+                {
+                    kleur2.Background = new SolidColorBrush(Colors.Green);
+                }
+                if (comboBox2.SelectedIndex == 5)
+                {
+                    kleur2.Background = new SolidColorBrush(Colors.Blue);
+                }
+            }
+
+            if (sender == comboBox3 && comboBox3.SelectedItem != null)
+            {
+                if (comboBox3.SelectedIndex == 0)
+                {
+                    kleur3.Background = new SolidColorBrush(Colors.Red);
+                }
+                if (comboBox3.SelectedIndex == 1)
+                {
+                    kleur3.Background = new SolidColorBrush(Colors.Yellow);
+                }
+                if (comboBox3.SelectedIndex == 2)
+                {
+                    kleur3.Background = new SolidColorBrush(Colors.Orange);
+                }
+                if (comboBox3.SelectedIndex == 3)
+                {
+                    kleur3.Background = new SolidColorBrush(Colors.White);
+                }
+                if (comboBox3.SelectedIndex == 4)
+                {
+                    kleur3.Background = new SolidColorBrush(Colors.Green);
+                }
+                if (comboBox3.SelectedIndex == 5)
+                {
+                    kleur3.Background = new SolidColorBrush(Colors.Blue);
+                }
+            }
+            if (sender == comboBox4 && comboBox4.SelectedItem != null)
+            {
+                if (comboBox4.SelectedIndex == 0)
+                {
+                    kleur4.Background = new SolidColorBrush(Colors.Red);
+                }
+                if (comboBox4.SelectedIndex == 1)
+                {
+                    kleur4.Background = new SolidColorBrush(Colors.Yellow);
+                }
+                if (comboBox4.SelectedIndex == 2)
+                {
+                    kleur4.Background = new SolidColorBrush(Colors.Orange);
+                }
+                if (comboBox4.SelectedIndex == 3)
+                {
+                    kleur4.Background = new SolidColorBrush(Colors.White);
+                }
+                if (comboBox4.SelectedIndex == 4)
+                {
+                    kleur4.Background = new SolidColorBrush(Colors.Green);
+                }
+                if (comboBox4.SelectedIndex == 5)
+                {
+                    kleur4.Background = new SolidColorBrush(Colors.Blue);
                 }
             }
         }
 
-      
     }
 }
