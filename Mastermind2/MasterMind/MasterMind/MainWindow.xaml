@@ -3,13 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Mastermind"
+        xmlns:local="clr-namespace:MasterMind"
         mc:Ignorable="d"
-        Title="MasterMind" Height="450" Width="800"
-        Background="Silver">
+        Title="MainWindow" Height="450" Width="800" Background="Silver">
     <Viewbox RenderTransformOrigin="-0.059,1.1">
         <Grid>
-            <ComboBox x:Name="comboBox1" HorizontalAlignment="Left" Margin="146,150,0,0" VerticalAlignment="Top" Width="125" Height="25" SelectionChanged="comboBox_SelectionChanged">
+            <ComboBox x:Name="comboBox1" HorizontalAlignment="Left" Margin="146,150,0,0" VerticalAlignment="Top" Width="125" Height="25" SelectionChanged="comboBox_SelectionChanged" Background="{x:Null}">
                 <ComboBoxItem Content="Red"/>
                 <ComboBoxItem Content="Yellow"/>
                 <ComboBoxItem Content="Orange"/>
@@ -43,14 +42,14 @@
             </ComboBox>
             <Button x:Name="ControlButton" Content="Poging" Margin="360,31,342,0" VerticalAlignment="Top" Height="95" Width="98"   Background="#832B00" FontSize="20" FontFamily="Nirmala UI Semilight" Click="ControlButton_Click">
                 <Button.Clip>
-                    <EllipseGeometry RadiusX="60" RadiusY="60" Center="50,50"/>
+                    <EllipseGeometry RadiusX="56" RadiusY="55" Center="50,50"/>
                 </Button.Clip>
             </Button>
-            <Label x:Name="kleur1" HorizontalAlignment="Left" Margin="0,-132,0,0" VerticalAlignment="Top" Height="145" Width="199" IsEnabled="False"/>
+            <Label x:Name="kleur1" HorizontalAlignment="Left" Margin="0,-132,0,0" VerticalAlignment="Top" Height="145" Width="199" IsEnabled="False" />
             <Label x:Name="kleur2" HorizontalAlignment="Left" Margin="204,-132,0,0" VerticalAlignment="Top" Height="145" Width="199" IsEnabled="False"/>
             <Label x:Name="kleur3" HorizontalAlignment="Left" Margin="406,-132,0,0" VerticalAlignment="Top" Height="145" Width="199" IsEnabled="False"/>
             <Label x:Name="kleur4" HorizontalAlignment="Left" Margin="610,-132,0,0" VerticalAlignment="Top" Height="145" Width="199" IsEnabled="False"/>
-           
+
         </Grid>
     </Viewbox>
 </Window>
