@@ -11,6 +11,7 @@ namespace Mastermind
     {
         private List<string> secretCode;
         private List<string> colors = new List<string> { "Red", "Yellow", "Orange", "White", "Green", "Blue" };
+        int attempts = 1;
 
         public MainWindow()
         {
@@ -28,15 +29,15 @@ namespace Mastermind
                 int colorNumber = color.Next(1, 7);
                 secretCode.Add(colors[colorNumber - 1]);
             }
-            Title = "Mastermind Code: " + string.Join(", ", secretCode);
+            Title = "Mastermind Code: " + string.Join(", ", secretCode) + $" | Poging: {attempts}";
         }
 
         private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBox comboBox = sender as ComboBox;
             ComboBoxItem selectedItem = comboBox.SelectedValue as ComboBoxItem;
-
             string selectedColor = selectedItem.Content.ToString();
+
             if (sender == comboBox1 && comboBox1.SelectedItem != null)
             {
                 ComboBoxPicker(comboBox1, kleur1, selectedColor);
@@ -55,10 +56,10 @@ namespace Mastermind
             }
         }
 
-        private void ComboBoxPicker(ComboBox combobox, Label labelColor, string selectedColor)
+        private void ComboBoxPicker(ComboBox combobox, Label labelToColor, string selectedColor)
         {
             SolidColorBrush color = ColorFromString(selectedColor);
-            labelColor.Background = color;
+            labelToColor.Background = color;
         }
 
         private SolidColorBrush ColorFromString(string color)
@@ -89,6 +90,11 @@ namespace Mastermind
 
         private void ControlButton_Click(object sender, RoutedEventArgs e)
         {
+            
+            
+            
+
+
             List<string> playerGuess = new List<string>
         {
             (comboBox1.SelectedItem as ComboBoxItem)?.Content.ToString(),
@@ -99,9 +105,11 @@ namespace Mastermind
             if (playerGuess.Contains(null))
             {
                 MessageBox.Show("Selecteer vier kleuren!","Foutief",MessageBoxButton.YesNo);
+                
                 return;
             }
             ResetLabelBorders();
+            
 
             int correctPosition = 0;
             int correctColor = 0;
@@ -120,9 +128,11 @@ namespace Mastermind
                     Label label = GetLabelByIndex(i);
                     label.BorderBrush = Brushes.DarkRed;
                     label.BorderThickness = new Thickness(6);
+                    
                 }
+               
             }
-
+            
             for (int i = 0; i < 4; i++)
             {
                 if (tempPlayerGuess[i] != null && tempSecretCode.Contains(tempPlayerGuess[i]))
@@ -134,13 +144,38 @@ namespace Mastermind
                     label.BorderBrush = Brushes.Wheat;
                     label.BorderThickness = new Thickness(6);
                 }
+                
+            }
+           
+
+            if (tempPlayerGuess != null && tempSecretCode != (tempPlayerGuess))
+            {
+                attempts += 1;
             }
 
-            if (correctPosition == 4)
+
+                if (correctPosition == 4)
             {
                 MessageBox.Show("Gefeliciteerd! Je hebt de code gekraakt!", "Gewonnen");
+                attempts += 1;
                 InitializeGame();
+                ResetAllColors();
+
             }
+            
+           
+
+
+
+
+        }
+
+        private void ResetAllColors()
+        {
+            kleur1.Background = Brushes.Transparent;
+            kleur2.Background = Brushes.Transparent;
+            kleur3.Background = Brushes.Transparent;
+            kleur4.Background = Brushes.Transparent;
         }
 
         private void ResetLabelBorders()
